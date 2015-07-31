@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
+import java.nio.DoubleBuffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -16,7 +18,7 @@ public class ByteUtils {
    * @param floatArray
    */
   public static byte[] floatArrayToByteArray(float floatArray[]) {
-    byte byteArray[] = new byte[floatArray.length*4];
+    byte byteArray[] = new byte[floatArray.length*4]; // 4 bytes per float
     ByteBuffer byteBuf = ByteBuffer.wrap(byteArray);
     FloatBuffer floatBuf = byteBuf.asFloatBuffer();
     floatBuf.put(floatArray);
@@ -30,13 +32,42 @@ public class ByteUtils {
    */
   public static float[] byteArrayToFloatArray(byte byteArray[]) throws IllegalArgumentException {
     if (byteArray.length % 4 != 0) {
-      throw new IllegalArgumentException("Length of byteArray is not evenly divisible by 4, which is the number of bytes in single float.");
+      throw new IllegalArgumentException("Length of byteArray is not evenly divisible by 4, which is the number of bytes in one float.");
     }
     float floatArray[] = new float[byteArray.length / 4];
     ByteBuffer byteBuf = ByteBuffer.wrap(byteArray);
     FloatBuffer floatBuf = byteBuf.asFloatBuffer();
     floatBuf.get(floatArray);
     return floatArray;
+  }
+
+  /**
+   * Convert from an array of shorts to an array of bytes
+   * 
+   * @param floatArray
+   */
+  public static byte[] shortArrayToByteArray(short shortArray[]) {
+    byte byteArray[] = new byte[floatArray.length*2]; // 2 bytes per short
+    ByteBuffer byteBuf = ByteBuffer.wrap(byteArray);
+    ShortBuffer shortBuf = byteBuf.asShortBuffer();
+    shortBuf.put(shortArray);
+    return byteArray;
+  }
+
+  /**
+   * Convert from an array of bytes to an array of shorts
+   * 
+   * @param byteArray
+   */
+  public static short[] byteArrayToFloatArray(byte byteArray[]) throws IllegalArgumentException {
+    if (byteArray.length % 2 != 0) {
+      throw new IllegalArgumentException("Length of byteArray is not evenly divisible by 2, which is the number of bytes in one short.");
+    }
+    short shortArray[] = new short[byteArray.length / 2];
+    ByteBuffer byteBuf = ByteBuffer.wrap(byteArray);
+    ShortBuffer shortBuf = byteBuf.asShortBuffer();
+    shortBuf.get(shortArray);
+    return shortArray;
   }
 
   /**

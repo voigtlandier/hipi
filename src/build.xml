@@ -21,6 +21,7 @@
       <zipfileset src="${json.jar}" />
       <zipfileset src="${metadata.jar}" />
       <zipfileset src="${xmpcore.jar}" />
+      <zipfileset src="${opencv.jar}" />
       <!-- <zipgroupfileset dir="../3rdparty/twelvemonkeys" includes="*.jar" /> -->
       <manifest>
       </manifest>

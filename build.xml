@@ -5,13 +5,13 @@
     <echo message="Setting properties for build task..."/>
 
     <!-- IMPORTANT: You must update the following two properties according to your Hadoop setup -->
-    <property name="hadoop.home" value="/usr/local/Cellar/hadoop/2.6.0/libexec/share/hadoop" />
+ <property name="hadoop.home" value="/usr/local/Cellar/hadoop/2.6.0/libexec/share/hadoop" />
     <property name="hadoop.version" value="2.6.0" />
 
     <property name="hipi.version" value="2.1" />
 
     <!-- Hadoop dependencies -->
-    <property name="hadoop.classpath" value="${hadoop.home}/common/hadoop-common-${hadoop.version}.jar:${hadoop.home}/mapreduce/hadoop-mapreduce-client-core-${hadoop.version}.jar:${hadoop.home}/common/lib/commons-cli-1.2.jar:${hadoop.home}/common/lib/commons-io-2.4.jar:${hadoop.home}/common/lib/commons-lang-2.6.jar:${hadoop.home}/common/lib/hadoop-auth-${hadoop.version}.jar:${hadoop.home}/hdfs/hadoop-hdfs-${hadoop.version}.jar:${hadoop.home}/common/hadoop-nfs-${hadoop.version}.jar" />
+    <property name="hadoop.classpath" value="${hadoop.home}/common/hadoop-common-${hadoop.version}.jar:${hadoop.home}/mapreduce/hadoop-mapreduce-client-core-${hadoop.version}.jar:${hadoop.home}/common/lib/commons-cli-1.2.jar:${hadoop.home}/common/lib/commons-io-2.4.jar:${hadoop.home}/common/lib/commons-lang-2.6.jar:${hadoop.home}/common/lib/hadoop-auth-${hadoop.version}.jar:${hadoop.home}/hdfs/hadoop-hdfs-${hadoop.version}.jar:${hadoop.home}/common/hadoop-nfs-${hadoop.version}.jar:/Users/zverham/Documents/Development/opencv/build/bin/opencv-2411.jar" />
 
     <!-- External dependencies -->
     <property name="junit.jar" value="${hadoop.home}/common/lib/junit-4.11.jar" />
@@ -35,6 +35,10 @@
     <!-- TwleveMonkeys ImageIO extensions -->
     <!-- https://github.com/haraldk/TwelveMonkeys -->
     <property name="twelvemonkeys.jar" value="./3rdparty/twelvemonkeys/*" />
+  	
+  	
+  	<!-- opencv -->
+    <property name="opencv.jar" value="/Users/zverham/Documents/Development/opencv/build/bin/opencv-2411.jar" />
 
     <echo message="Properties set."/>
   </target>
@@ -92,6 +96,9 @@
 
       <!-- Unit test dependencies -->
       <property name="junit.jar" value="${hadoop.home}/common/lib/junit-4.11.jar" />
+    	
+      <!-- opencv -->
+      <property name="opencv.jar" value="/Users/zverham/Documents/Development/opencv/build/bin/opencv-2411.jar" /> 	
     </ant>
 
     <echo message="HIPI library built." />
